@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/cerebruminc/node-playwright-base-image/compare/v1.1.0...v1.1.1) (2025-11-11)
+
+
+### Bug Fixes
+
+* use default token for container push workflow ([e115186](https://github.com/cerebruminc/node-playwright-base-image/commit/e115186241bb9a8810a54aea0e1933fb379defa6))
+
 ## [1.1.0](https://github.com/cerebruminc/node-playwright-base-image/compare/v1.0.0...v1.1.0) (2025-11-11)
 
 
