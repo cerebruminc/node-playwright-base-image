@@ -1,0 +1,41 @@
+name: Test Container Build
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  docker_test:
+    timeout-minutes: 30
+    permissions:
+      id-token: write
+      contents: read
+    runs-on: ubuntu-latest
+    name: integration testing in docker compose
+    defaults:
+      run:
+        shell: bash --noprofile --norc -eo pipefail -x {0}
+
+    env:
+      DOCKER_BUILDKIT: "1"
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run docker build
+        run: |
+          docker build . -t cognition --build-arg NPM_TOKEN=${{ secrets.CEREBRUM_NPM_TOKEN }}
+
+      - name: Smoke test
+        run: |
+          docker run -d -p 3000:3000 cognition
+          sleep 30
+          if [ "$(curl -s -o /dev/null -w "%{http_code}" localhost:3000/orders)" != "200" ]; then
+            echo "Smoke test failed. Non-200 response received."
+            exit 1
+          fi
+          docker stop $(docker ps -q --filter ancestor=cognition)
