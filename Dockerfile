@@ -21,4 +21,4 @@ WORKDIR /usr/api
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
 # Let Playwright handle browser deps + Chromium itself
-RUN npx --yes playwright install --with-deps chromium
+RUN npx --yes playwright@1.55.1 install --with-deps chromium
