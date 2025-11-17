@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/cerebruminc/node-playwright-base-image/compare/v1.1.1...v1.1.2) (2025-11-17)
+
+
+### Bug Fixes
+
+* pin playwright version ([4866ef0](https://github.com/cerebruminc/node-playwright-base-image/commit/4866ef01224972306a49553527ae98a47d4e859f))
+
 ## [1.1.1](https://github.com/cerebruminc/node-playwright-base-image/compare/v1.1.0...v1.1.1) (2025-11-11)
 
 
